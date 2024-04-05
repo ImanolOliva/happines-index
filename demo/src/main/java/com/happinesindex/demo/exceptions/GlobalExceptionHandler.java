@@ -28,6 +28,7 @@ public class GlobalExceptionHandler extends RuntimeException {
     public ResponseEntity<Object> handleException(Exception ex) {
         logger.error("Se ha producido una excepción:", ex);
         Map<String, Object> body = new LinkedHashMap<>();
+        body.put("ex",ex.getMessage());
         body.put("message", ex.getMessage());
         body.put("cause", ex.getClass());
         body.put("error", ex.getClass()+ " vuelve a intentarlo");
